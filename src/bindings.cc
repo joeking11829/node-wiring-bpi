@@ -17,10 +17,10 @@
 #include <pcf8574.h>
 #include <pcf8591.h>
 #include <sn3218.h>
-#include <pca9685.h>
+//#include <pca9685.h>
 #include <softPwm.h>
 #include <softServo.h>
-#include <softTone.h>
+//#include <softTone.h>
 #include <sr595.h>
 #include <wiringPiI2C.h>
 #include <wiringPiSPI.h>
@@ -53,7 +53,7 @@ namespace wpi {
   DECLARE(pwmWrite);
   DECLARE(analogRead);
   DECLARE(analogWrite);
-  DECLARE(pulseIn);
+//  DECLARE(pulseIn);
   
   DECLARE(delay);
   DECLARE(delayMicroseconds);
@@ -66,7 +66,7 @@ namespace wpi {
   
   // On-Board Rasberry Pi hardware specific stuff
   DECLARE(piBoardRev);
-  DECLARE(piBoardId);
+//  DECLARE(piBoardId);
   DECLARE(wpiPinToGpio);
   DECLARE(physPinToGpio);
   DECLARE(setPadDrive);
@@ -94,7 +94,7 @@ namespace wpi {
   DECLARE(pcf8591Setup);
   DECLARE(sn3218Setup);
   DECLARE(sr595Setup);
-  DECLARE(pca9685Setup);
+//  DECLARE(pca9685Setup);
   
   // Soft PWM
   DECLARE(softPwmCreate);
@@ -106,9 +106,9 @@ namespace wpi {
   DECLARE(softServoSetup);
   
   // Soft Tone
-  DECLARE(softToneCreate);
-  DECLARE(softToneWrite);
-  DECLARE(softToneStop);
+//  DECLARE(softToneCreate);
+//  DECLARE(softToneWrite);
+//  DECLARE(softToneStop);
   
   // WiringPI I2C
   DECLARE(wiringPiI2CRead);
@@ -314,7 +314,7 @@ IMPLEMENT(pinMode) {
   mode = args[1]->NumberValue();
   
   // CHECK: Allowed values
-  if (mode != INPUT && mode != OUTPUT && mode != PWM_OUTPUT && mode != GPIO_CLOCK && mode != SOFT_PWM_OUTPUT && mode != SOFT_TONE_OUTPUT) {
+  if (mode != INPUT && mode != OUTPUT && mode != PWM_OUTPUT && mode != GPIO_CLOCK && mode != SOFT_PWM_OUTPUT) {
     ThrowException(Exception::TypeError(
       String::New("Incorrect mode value. INPUT, OUTPUT, PWM_OUTPUT or GPIO_CLOCK expected.")));
     return scope.Close(Undefined());
@@ -530,6 +530,7 @@ IMPLEMENT(analogWrite) {
   return scope.Close(Undefined());
 }
 
+/*
 IMPLEMENT(pulseIn) {
     HandleScope scope;
     int pin;
@@ -557,6 +558,7 @@ IMPLEMENT(pulseIn) {
     
     return scope.Close(Int32::New(microseconds));
 }
+*/
 
 IMPLEMENT(delay) {
     HandleScope scope;
@@ -643,6 +645,7 @@ IMPLEMENT(piBoardRev) {
   return scope.Close(Int32::New(res));
 }
 
+/*
 IMPLEMENT(piBoardId) {
     HandleScope scope;
     int model;
@@ -667,6 +670,7 @@ IMPLEMENT(piBoardId) {
     
     return scope.Close(obj);
 }
+*/
 
 // Func : int wpiPinToGpio(int wpiPin)
 // Description : This returns the BCM_GPIO pin number of the supplied wiringPi pin.
@@ -1620,6 +1624,7 @@ IMPLEMENT(sr595Setup) {
   return scope.Close(Int32::New(res));
 }
 
+/*
 IMPLEMENT(pca9685Setup) {
     HandleScope scope;
     int pinBase;
@@ -1653,6 +1658,7 @@ IMPLEMENT(pca9685Setup) {
     
     return scope.Close(Int32::New(res));
 }
+*/
 
 // === Soft PWM ===
 
@@ -1842,6 +1848,7 @@ IMPLEMENT(softServoSetup) {
 // NOTE2 : Each pin activated in softTone mode uses approximately 0.5% of the CPU.
 // NOTE3 : You need to keep your program running to maintain the sound output!
 
+/*
 IMPLEMENT(softToneCreate) {
   HandleScope scope;
   int pin;
@@ -1867,10 +1874,12 @@ IMPLEMENT(softToneCreate) {
   
   return scope.Close(Int32::New(res));
 }
+*/
 
 // Func : void softToneWrite(int pin, int freq);
 // Description : This updates the tone frequency value on the given pin. The tone will be played until you set the frequency to 0.
 
+/*
 IMPLEMENT(softToneWrite) {
   HandleScope scope;
   int pin;
@@ -1897,7 +1906,9 @@ IMPLEMENT(softToneWrite) {
   
   return scope.Close(Undefined());
 }
+*/
 
+/*
 IMPLEMENT(softToneStop) {
     HandleScope scope;
     int pin;
@@ -1921,6 +1932,7 @@ IMPLEMENT(softToneStop) {
     
     return scope.Close(Undefined());
 }
+*/
 
 // === WiringPI I2C ===
 
@@ -2408,7 +2420,7 @@ void init(Handle<Object> target) {
   EXPORT(pwmWrite);
   EXPORT(analogRead);
   EXPORT(analogWrite);
-  EXPORT(pulseIn);
+//  EXPORT(pulseIn);
   
   EXPORT(delay);
   EXPORT(delayMicroseconds);
@@ -2421,7 +2433,7 @@ void init(Handle<Object> target) {
   
   // On-Board Rasberry Pi hardware specific stuff
   EXPORT(piBoardRev);
-  EXPORT(piBoardId);
+//  EXPORT(piBoardId);
   EXPORT(wpiPinToGpio);
   EXPORT(physPinToGpio);
   EXPORT(setPadDrive);
@@ -2449,7 +2461,7 @@ void init(Handle<Object> target) {
   EXPORT(pcf8591Setup);
   EXPORT(sn3218Setup);
   EXPORT(sr595Setup);
-  EXPORT(pca9685Setup);
+//  EXPORT(pca9685Setup);
   
   // Soft PWM
   EXPORT(softPwmCreate);
@@ -2461,9 +2473,9 @@ void init(Handle<Object> target) {
   EXPORT(softServoSetup);
   
   // Soft Tone
-  EXPORT(softToneCreate);
-  EXPORT(softToneWrite);
-  EXPORT(softToneStop);
+//  EXPORT(softToneCreate);
+//  EXPORT(softToneWrite);
+//  EXPORT(softToneStop);
   
   // WiringPI I2C
   EXPORT(wiringPiI2CRead);
