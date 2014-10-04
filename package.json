@@ -1,5 +1,5 @@
 {
-  "name": "wiring-pi",
+  "name": "wiring-bpi",
   "version": "1.1.2",
   "description": "Bindings to wiringPi",
   "main": "lib/exports.js",
@@ -9,15 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:eugeneware/wiring-pi.git"
+    "url": "git@github.com:andyhu/node-wiring-bpi.git"
   },
   "keywords": [
     "wiringPi",
     "gpio",
-    "raspberry",
+    "banana pi",
     "pi",
-    "raspberrypi",
-    "bcm2835"
+    "bananapi"
   ],
   "author": "Igor Soarez <igorsoarez@gmail.com>",
   "contributors": [
